@@ -9,8 +9,8 @@ use typst_library::engine::Engine;
 use typst_library::foundations::{Content, Fold, Packed, Smart, StyleChain};
 use typst_library::introspection::Locator;
 use typst_library::layout::{
-    Abs, Alignment, Axes, Celled, Corners, GridCell, GridChild, GridElem, GridItem, Length,
-    OuterHAlignment, OuterVAlignment, Rel, ResolvedCelled, Sides, Sizing,
+    Abs, Alignment, Axes, Celled, Corners, GridCell, GridChild, GridElem, GridItem,
+    Length, OuterHAlignment, OuterVAlignment, Rel, ResolvedCelled, Sides, Sizing,
 };
 use typst_library::model::{TableCell, TableChild, TableElem, TableItem};
 use typst_library::text::TextElem;

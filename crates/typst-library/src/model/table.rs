@@ -9,9 +9,9 @@ use crate::foundations::{
     cast, elem, scope, Content, NativeElement, Packed, Show, Smart, StyleChain,
 };
 use crate::layout::{
-    show_grid_cell, Abs, Alignment, BlockElem, Celled, Corners, GridCell, GridFooter, GridHLine,
-    GridHeader, GridVLine, Length, OuterHAlignment, OuterVAlignment, Rel, Sides,
-    TrackSizings,
+    show_grid_cell, Abs, Alignment, BlockElem, Celled, Corners, GridCell, GridFooter,
+    GridHLine, GridHeader, GridVLine, Length, OuterHAlignment, OuterVAlignment, Rel,
+    Sides, TrackSizings,
 };
 use crate::model::Figurable;
 use crate::text::LocalName;

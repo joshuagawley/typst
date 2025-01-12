@@ -14,7 +14,8 @@ use crate::foundations::{
     IntoValue, NativeElement, Packed, Reflect, Resolve, Show, Smart, StyleChain, Value,
 };
 use crate::layout::{
-    Alignment, BlockElem, Corners, Length, OuterHAlignment, OuterVAlignment, Rel, Sides, Sizing,
+    Alignment, BlockElem, Corners, Length, OuterHAlignment, OuterVAlignment, Rel, Sides,
+    Sizing,
 };
 use crate::model::{TableCell, TableFooter, TableHLine, TableHeader, TableVLine};
 use crate::visualize::{Paint, Stroke};
