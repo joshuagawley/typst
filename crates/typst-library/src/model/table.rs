@@ -9,7 +9,7 @@ use crate::foundations::{
     cast, elem, scope, Content, NativeElement, Packed, Show, Smart, StyleChain,
 };
 use crate::layout::{
-    show_grid_cell, Abs, Alignment, BlockElem, Celled, GridCell, GridFooter, GridHLine,
+    show_grid_cell, Abs, Alignment, BlockElem, Celled, Corners, GridCell, GridFooter, GridHLine,
     GridHeader, GridVLine, Length, OuterHAlignment, OuterVAlignment, Rel, Sides,
     TrackSizings,
 };
@@ -209,6 +209,10 @@ pub struct TableElem {
     #[fold]
     #[default(Celled::Value(Sides::splat(Some(Some(Arc::new(Stroke::default()))))))]
     pub stroke: Celled<Sides<Option<Option<Arc<Stroke>>>>>,
+
+    #[resolve]
+    #[fold]
+    pub radius: Celled<Corners<Option<Rel<Length>>>>,
 
     /// How much to pad the cells' content.
     ///
@@ -691,6 +695,11 @@ pub struct TableCell {
     #[resolve]
     #[fold]
     pub stroke: Sides<Option<Option<Arc<Stroke>>>>,
+
+    /// The cell's [radius]($table.radius) override.
+    #[resolve]
+    #[fold]
+    pub radius: Corners<Option<Rel<Length>>>,
 
     /// Whether rows spanned by this cell can be placed in different pages.
     /// When equal to `{auto}`, a cell spanning only fixed-size rows is

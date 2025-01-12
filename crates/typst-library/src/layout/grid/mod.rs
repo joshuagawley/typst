@@ -14,7 +14,7 @@ use crate::foundations::{
     IntoValue, NativeElement, Packed, Reflect, Resolve, Show, Smart, StyleChain, Value,
 };
 use crate::layout::{
-    Alignment, BlockElem, Length, OuterHAlignment, OuterVAlignment, Rel, Sides, Sizing,
+    Alignment, BlockElem, Corners, Length, OuterHAlignment, OuterVAlignment, Rel, Sides, Sizing,
 };
 use crate::model::{TableCell, TableFooter, TableHLine, TableHeader, TableVLine};
 use crate::visualize::{Paint, Stroke};
@@ -292,6 +292,10 @@ pub struct GridElem {
     #[resolve]
     #[fold]
     pub stroke: Celled<Sides<Option<Option<Arc<Stroke>>>>>,
+
+    #[resolve]
+    #[fold]
+    pub radius: Celled<Corners<Option<Rel<Length>>>>,
 
     /// How much to pad the cells' content.
     ///
@@ -726,6 +730,10 @@ pub struct GridCell {
 
     /// The cell's [alignment]($grid.align) override.
     pub align: Smart<Alignment>,
+
+    #[resolve]
+    #[fold]
+    pub radius: Corners<Option<Rel<Length>>>,
 
     /// The cell's [inset]($grid.inset) override.
     pub inset: Smart<Sides<Option<Rel<Length>>>>,

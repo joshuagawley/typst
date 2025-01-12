@@ -139,6 +139,23 @@
   [G], [H]
 )
 
+--- table-radius ---
+#set page(height: 5cm, width: 20cm, margin: 0.5cm)
+#grid(columns: 4 * (1fr,), rows: (1.5cm, 2cm), column-gutter: 8pt, row-gutter: 8pt, inset: 8pt, fill: luma(240), radius: 8pt,
+  grid.cell(rowspan: 2, fill: blue, [fill: blue \ rowspan: 2]), 
+  grid.cell(colspan: 2, radius: (top-left: calc.pi * 1em, rest: 0pt), 
+    [radius: (top-left: #sym.pi em, rest: 0pt) \ colspan: 2]
+  ), 
+  grid.cell(align: right, [align: right]),
+
+  grid.cell(stroke: (paint: green, dash: "dashed", thickness: 2pt), 
+    [stroke: (paint: green, dash: "dashed", thickness: 2pt)]
+  ),
+  grid.cell(colspan: 2, fill: gradient.linear(angle: 20deg, ..color.map.crest.map(x => x.lighten(50%))), 
+    [fill: gradient.linear(angle: 20deg, \ #h(1.5em) ..color.map.crest.map(x => x.lighten(50%)))\ colspan: 2]
+  )
+)
+
 --- table-contextual-measurement ---
 // Test that table cells with varying contextual results are properly
 // measured.

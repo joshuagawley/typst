@@ -9,7 +9,7 @@ use typst_library::engine::Engine;
 use typst_library::foundations::{Content, Fold, Packed, Smart, StyleChain};
 use typst_library::introspection::Locator;
 use typst_library::layout::{
-    Abs, Alignment, Axes, Celled, GridCell, GridChild, GridElem, GridItem, Length,
+    Abs, Alignment, Axes, Celled, Corners, GridCell, GridChild, GridElem, GridItem, Length,
     OuterHAlignment, OuterVAlignment, Rel, ResolvedCelled, Sides, Sizing,
 };
 use typst_library::model::{TableCell, TableChild, TableElem, TableItem};
@@ -36,6 +36,7 @@ pub fn grid_to_cellgrid<'a>(
     let row_gutter = elem.row_gutter(styles);
     let fill = elem.fill(styles);
     let stroke = elem.stroke(styles);
+    let radius = elem.radius(styles);
 
     let tracks = Axes::new(columns.0.as_slice(), rows.0.as_slice());
     let gutter = Axes::new(column_gutter.0.as_slice(), row_gutter.0.as_slice());
@@ -66,6 +67,7 @@ pub fn grid_to_cellgrid<'a>(
         align,
         &inset,
         &stroke,
+        &radius,
         engine,
         styles,
         elem.span(),
@@ -89,6 +91,7 @@ pub fn table_to_cellgrid<'a>(
     let row_gutter = elem.row_gutter(styles);
     let fill = elem.fill(styles);
     let stroke = elem.stroke(styles);
+    let radius = elem.radius(styles);
 
     let tracks = Axes::new(columns.0.as_slice(), rows.0.as_slice());
     let gutter = Axes::new(column_gutter.0.as_slice(), row_gutter.0.as_slice());
@@ -119,6 +122,7 @@ pub fn table_to_cellgrid<'a>(
         align,
         &inset,
         &stroke,
+        &radius,
         engine,
         styles,
         elem.span(),
@@ -668,6 +672,7 @@ impl<'a> CellGrid<'a> {
         align: &Celled<Smart<Alignment>>,
         inset: &Celled<Sides<Option<Rel<Length>>>>,
         stroke: &ResolvedCelled<Sides<Option<Option<Arc<Stroke>>>>>,
+        radius: &ResolvedCelled<Corners<Option<Rel<Length>>>>,
         engine: &mut Engine,
         styles: StyleChain,
         span: Span,
